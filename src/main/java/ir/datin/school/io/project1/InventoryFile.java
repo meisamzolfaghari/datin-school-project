@@ -1,7 +1,6 @@
 package ir.datin.school.io.project1;
 
 import ir.datin.school.io.project1.generators.DepositNumber;
-import ir.datin.school.io.project1.generators.PaymentAmountOfCreditors;
 import ir.datin.school.io.project1.generators.RandomFieldsGenerator;
 
 import java.io.FileWriter;
