@@ -3,9 +3,6 @@ package ir.datin.school.io.project1;
 import java.util.Random;
 
 public class RandomFieldsGenerator {
-    static String getRandomPaymentState() {
-        return String.valueOf(new Random().nextInt(10) * 100);
-    }
 
     static String getRandomDepositNumber() {
         Random random = new Random();
