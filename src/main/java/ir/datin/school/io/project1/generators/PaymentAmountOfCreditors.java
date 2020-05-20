@@ -1,10 +1,12 @@
-package ir.datin.school.io.project1;
+package ir.datin.school.io.project1.generators;
+
+import ir.datin.school.io.project1.generators.RandomFieldsGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class PaymentAmountOfCreditors {
-    static List<Integer> getAllCreditorPaymentAmount() {
+    public static List<Integer> getAllCreditorPaymentAmount() {
         List<Integer> temp = new ArrayList<>();
 
         while (temp.size() < 49)

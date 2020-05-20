@@ -1,10 +1,10 @@
-package ir.datin.school.io.project1;
+package ir.datin.school.io.project1.generators;
 
 import java.util.Random;
 
 public class RandomFieldsGenerator {
 
-    static String getRandomDepositNumber() {
+    public static String getRandomDepositNumber() {
         Random random = new Random();
         String first = "1";
         String second = String.valueOf((random.nextInt(9) + 1) * 10);
@@ -13,7 +13,7 @@ public class RandomFieldsGenerator {
         return first + "." + second + "." + third + "." + forth;
     }
 
-    static Integer getRandomPaymentAmount() {
+    public static Integer getRandomPaymentAmount() {
         return new Random().nextInt(10) * 100;
     }
 }

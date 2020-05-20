@@ -1,4 +1,6 @@
-package ir.datin.school.io.project1;
+package ir.datin.school.io.project1.generators;
+
+import ir.datin.school.io.project1.generators.RandomFieldsGenerator;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -7,7 +9,7 @@ import java.util.Set;
 
 public class DepositNumber {
 
-    static List<String> getAllDepositNumbers() {
+    public static List<String> getAllDepositNumbers() {
         Set<String> depositNumbersSet = new HashSet<>();
         while (depositNumbersSet.size() < 50)
             depositNumbersSet.add(RandomFieldsGenerator.getRandomDepositNumber());
