@@ -14,6 +14,6 @@ public class RandomFieldsGenerator {
     }
 
     public static Integer getRandomPaymentAmount() {
-        return new Random().nextInt(10) * 100;
+        return (new Random().nextInt(9) + 1) * 100;
     }
 }

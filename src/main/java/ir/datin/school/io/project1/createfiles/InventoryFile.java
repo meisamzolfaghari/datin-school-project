@@ -1,4 +1,4 @@
-package ir.datin.school.io.project1;
+package ir.datin.school.io.project1.createfiles;
 
 import ir.datin.school.io.project1.generators.DepositNumber;
 import ir.datin.school.io.project1.generators.RandomFieldsGenerator;
@@ -24,9 +24,5 @@ public class InventoryFile {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public static void update() {
-
     }
 }

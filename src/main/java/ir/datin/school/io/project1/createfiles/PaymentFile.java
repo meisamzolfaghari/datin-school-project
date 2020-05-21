@@ -1,12 +1,13 @@
-package ir.datin.school.io.project1;
+package ir.datin.school.io.project1.createfiles;
 
-import ir.datin.school.io.project1.generators.DepositNumber;
 import ir.datin.school.io.project1.generators.PaymentAmountOfCreditors;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class PaymentFile {
     public static void create() {
