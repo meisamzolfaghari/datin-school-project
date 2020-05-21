@@ -44,7 +44,7 @@ public class salaryPayment {
             for (String c : creditors)
                 creditorMap.put(c.split("\t")[1], Integer.parseInt(c.split("\t")[2]));
 
-            int bankBalance = inventoryMap.values().stream().reduce(0, Integer::sum);
+            int bankBalance = inventoryMap.get(debtorDepositNumber);
 
             //transaction map declaration
             Map<String, Integer> transactionMap = new HashMap<>();
