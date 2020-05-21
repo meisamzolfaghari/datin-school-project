@@ -19,6 +19,7 @@ public class salaryPayment {
             BufferedReader inventoryBufferedReader = new BufferedReader(inventoryFileReader);
             BufferedReader paymentBufferedReader = new BufferedReader(paymentFileReader);
 
+            //reading from file and assign them into maps data structure...................................
             List<String> inventories = inventoryBufferedReader.lines()
                     .collect(Collectors.toList());
 
@@ -26,6 +27,7 @@ public class salaryPayment {
             for (String i : inventories)
                 inventoryMap.put(i.split("\t")[0], Integer.parseInt(i.split("\t")[1]));
 
+            //payment assign (dividing to a debtor and creditors)
             List<String> payments = paymentBufferedReader.lines().collect(Collectors.toList());
 
             String debtor = payments.stream()
@@ -44,6 +46,10 @@ public class salaryPayment {
 
             int bankBalance = inventoryMap.values().stream().reduce(0, Integer::sum);
 
+            //transaction map declaration
+            Map<String, Integer> transactionMap = new HashMap<>();
+
+            // check if there is enough balance in bank account......................................
             if (bankBalance < totalCredits) {
                 System.out.println("Not enough Balance to pay the Credits!");
                 inventoryBufferedReader.close();
@@ -53,21 +59,23 @@ public class salaryPayment {
                 return;
             }
 
+            //close readers.........................................................................
             inventoryBufferedReader.close();
             paymentBufferedReader.close();
             inventoryFileReader.close();
             paymentFileReader.close();
 
+            //process an writing on files.............................................................
             FileWriter inventoryFileWriter = new FileWriter("inventory.txt");
             FileWriter paymentFileWriter = new FileWriter("payment.txt");
             FileWriter transactionFileWriter = new FileWriter("transaction.txt");
 
+            //write debtor changes on files...................
             inventoryFileWriter.write(debtorDepositNumber + "\t" + (bankBalance - totalCredits) + "\n");
             inventoryMap.remove(debtorDepositNumber);
             paymentFileWriter.write(paymentStatus.debtor.toString() + "\t" + debtorDepositNumber + "\t" + 0 + "\n");
 
-            Map<String, Integer> transactionMap = new HashMap<>();
-
+            //process and create transactions..............
             for (String c : creditorMap.keySet()) {
                 if (inventoryMap.get(c) != null)
                     inventoryMap.put(c, inventoryMap.get(c) + creditorMap.get(c));
@@ -75,21 +83,26 @@ public class salaryPayment {
                 creditorMap.put(c, 0);
             }
 
+            //write on inventory file and update it
             for (String i : inventoryMap.keySet()) {
                 inventoryFileWriter.write(i + "\t" + inventoryMap.get(i) + "\n");
             }
 
+            //write on transaction file
             for (String t : transactionMap.keySet()) {
                 transactionFileWriter.write(t + "\t" + transactionMap.get(t) + "\n");
             }
 
+            //write on payment file and update it
             for (String c : creditorMap.keySet()) {
                 paymentFileWriter.write(paymentStatus.creditor.toString() + "\t" + c + "\t" + creditorMap.get(c) + "\n");
             }
 
+            //close writers..................
             inventoryFileWriter.close();
             paymentFileWriter.close();
             transactionFileWriter.close();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
